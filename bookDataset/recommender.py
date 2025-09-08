@@ -4,22 +4,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-#dtype making sure that datatypes correct
-dtype_specs = {
-    "Year-Of-Publication" : int,
-    "Book-Rating" : int,
-    "User-ID" : str,
-    "Age" : str,
-    "ISBN" : str,
-    "Book-Title": str,
-    "Book-Author": str,
-    "Publisher": str,
-    "Image-URL-S": str,
-    "Image-URL-M": str,
-    "Image-URL-L": str,
-    "Location" : str,
-    "Age": str
-}
 
 
 

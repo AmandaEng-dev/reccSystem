@@ -78,5 +78,17 @@ book_rated = (overall_rating.
               groupby(by = ['Book-Title'])['Book-Rating'].
               count().reset_index())
 
-print(book_rated.head())
+book_ratingCount= (book_rated.head())
+print(book_ratingCount)
 
+
+
+#Demographic based recommendation of users living in spain and austrilia 
+
+#Merge books, users, and rating datasets
+overall_ratingCount = overall_rating.merge(book_ratingCount, left_on = 'Book-Title', right_on = 'Book-Title', how = 'left')
+bookUser = overall_ratingCount.merge(users, left_on = 'User-ID', right_on = 'User-ID', how = 'left')
+
+#filter by locations
+demographic = bookUser[bookUser['Location'].str.contains("australia|spain")]
+print(demographic.head())

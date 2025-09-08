@@ -52,7 +52,7 @@ plt.title('User Age Group')
 plt.xlabel('Age')
 plt.ylabel('Number of Users')
 
-# plt.show()
+plt.show()
 
 #Combined ratings of all books on pie chart (using [] becvause python doesn't accept '-' as a colunm name)
 
@@ -60,7 +60,7 @@ ratings['Book-Rating'].value_counts().plot(kind='pie')
 plt.title('Combined Rating of All Books')
 plt.xlabel('Rating')
 
-# plt.show()
+plt.show()
 
 
 #recomended books by rating to users based on book's ISBN and sort in best to worst order
@@ -69,4 +69,14 @@ recommender_byRating = pd.DataFrame(ratings.groupby('ISBN')['Book-Rating'].count
 top_books = recommender_byRating.sort_values('Book-Rating', ascending=False).head()
 
 print(top_books)
+
+#merge books and ratings datasets
+overall_rating = pd.merge(ratings, books, on='ISBN')
+
+#Find most popular book in the data by rating and show the title
+book_rated = (overall_rating.
+              groupby(by = ['Book-Title'])['Book-Rating'].
+              count().reset_index())
+
+print(book_rated.head())
 

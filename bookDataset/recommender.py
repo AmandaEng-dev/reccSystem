@@ -6,19 +6,17 @@ import matplotlib.pyplot as plt
 
 
 
-
-
 #Read the information from the books dataset
-books = pd.read_csv('C:/Users/onetw/Projects/reccSystem/reccSystem/bookDataset/books_data/books.csv',sep=';', on_bad_lines='skip', encoding="latin-1")
-books = pd.read_csv('C:/Users/onetw/Projects/reccSystem/reccSystem/bookDataset/books_data/books.csv', sep=';', on_bad_lines='skip', encoding="latin-1")
+books = pd.read_csv('C:/Users/onetw/Projects/reccSystem/reccSystem/bookDataset/books_data/books.csv',sep=';', on_bad_lines='skip', encoding="latin-1",low_memory=False)
+books = pd.read_csv('C:/Users/onetw/Projects/reccSystem/reccSystem/bookDataset/books_data/books.csv', sep=';', on_bad_lines='skip', encoding="latin-1",low_memory=False)
 books.columns = ['ISBN','Book-Title','Book-Author','Year-Of-Publication','Publisher','Image-URL-S','Image-URL-M','Image-URL-L']
 
 #Read users dataset
-users = pd.read_csv('C:/Users/onetw/Projects/reccSystem/reccSystem/bookDataset/books_data/users.csv', sep=';', on_bad_lines='skip', encoding="latin-1")
+users = pd.read_csv('C:/Users/onetw/Projects/reccSystem/reccSystem/bookDataset/books_data/users.csv', sep=';', on_bad_lines='skip', encoding="latin-1",low_memory=False)
 users.columns = ['User-ID','Location','Age']
 
 #Read the Ratings dataset
-ratings = pd.read_csv('C:/Users/onetw/Projects/reccSystem/reccSystem/bookDataset/books_data/ratings.csv', sep=';', on_bad_lines='skip', encoding="latin-1")
+ratings = pd.read_csv('C:/Users/onetw/Projects/reccSystem/reccSystem/bookDataset/books_data/ratings.csv', sep=';', on_bad_lines='skip', encoding="latin-1",low_memory=False)
 ratings.columns = ['User-ID','ISBN','Book-Rating']
 
 #verifuying the datasets are read

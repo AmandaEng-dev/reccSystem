@@ -37,26 +37,36 @@ users.columns = ['User-ID','Location','Age']
 ratings = pd.read_csv('C:/Users/onetw/Projects/reccSystem/reccSystem/bookDataset/books_data/ratings.csv', sep=';', on_bad_lines='skip', encoding="latin-1")
 ratings.columns = ['User-ID','ISBN','Book-Rating']
 
-# print(books.shape)
-# print(list(books.columns))
+#verifuying the datasets are read
+print(books.shape)
+print(list(books.columns))
 
-# print(ratings.shape)
-# print(list(ratings.columns))
+print(ratings.shape)
+print(list(ratings.columns))
 
 
 #generate histogram of user ages (0-100)
 
-# users.Age.hist(bins=range(0,100))
-
-# plt.title('User Age Group')
-# plt.xlabel('Age')
-# plt.ylabel('Number of Users')
+users.Age.hist(bins=range(0,100))
+plt.title('User Age Group')
+plt.xlabel('Age')
+plt.ylabel('Number of Users')
 
 # plt.show()
 
-#Combined ratings of all books (using [] becvause python doesn't accept -)
+#Combined ratings of all books on pie chart (using [] becvause python doesn't accept '-' as a colunm name)
+
 ratings['Book-Rating'].value_counts().plot(kind='pie')
 plt.title('Combined Rating of All Books')
 plt.xlabel('Rating')
-plt.show()
+
+# plt.show()
+
+
+#recomended books by rating to users based on book's ISBN and sort in best to worst order
+
+recommender_byRating = pd.DataFrame(ratings.groupby('ISBN')['Book-Rating'].count())
+top_books = recommender_byRating.sort_values('Book-Rating', ascending=False).head()
+
+print(top_books)
 
